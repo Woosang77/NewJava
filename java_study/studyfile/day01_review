@@ -26,6 +26,28 @@
 
        - v2는 if문 내부에서 선언된 변수이므로 {} 밖에서 호출 및 사용 불가능
        - Error Message = "v2 cannot be resolved to a variable"
+<데이터 타입>
+ (기본 타입)
+  - 정수 : byte / char / short / int(가장 자주 사용) / long
+  - 실수 : float / double
+  - 논리 : boolean (true / false)
 
+   * String 타입은 클래스 타입으로, String 변수는 참조 변수이다.
+   * 일반적인 변수들은 생성하고 값을 저장하는 개념이지만,
+   * 참조변수는 객체를 생성하고, 객체의 번지값을 참조변수가 가진다.
 
+ (타입 변환)
+   1) 자동 변환 : 작은 크기의 타입을 큰 크기의 타입으로 변환하는 것을 의미함
+   크기별 타입 : byte(1) < short(2) < int(4) < long(8) < float(4) < double(8)
+   ex) byte byteValue = 10;
+       int intValue = byteValue;
+       System.out.println(intValue);
+       // 10 출력
+
+   2) 강제 변환(Casting) : 큰 크기의 타입을 작은 크기의 타입으로 욱여 넣을 때 사용
+    사용 : 작은 크기 타입 = (작은 크기 타입) 큰 크기 타입;
+    ex) int intValue = 103029770;
+        byte byteValue = (byte) intValue;
+        System.out.println(intValue);
+        // 103029970 출력
 
