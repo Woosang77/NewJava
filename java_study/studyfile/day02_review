@@ -67,6 +67,32 @@
                      Car(String model) {}
                      Car(String model, String color){}
                      Car(String model, String color, int maxSpeed){} ...
-        3)메소드
 
+            - 생성자 중복 제거 this()
+                다양한 데이터로 객체를 생성할 때, 중복되는 코드를 제거하기 위해 this()를 사용함
+                예시는 practice02_this() 참고
+
+        3)메소드
+            - 객체의 동작을 담당하는 중괄호
+            - 형태 : 리턴타입 메소드이름 ([매개변수선언 ...]) { 메소드 내부 실행 블록 }
+
+        4) 정적 멤버 static
+            - 클래스에 고정된 멤버로 객체를 생성하지 않고 사용할 수 있는 필드와 메소드
+            - 선언
+                static 타입 필드명 [= 초기값];
+                static 리턴타입 메소드명( 매개변수선언.. ) {...}
+            - 사용
+                클래스.필드;
+                클래스.메소드(매개변수);
+                ex) Calculator.plus(10,5);      // 15 return
+                    Calculator.pi;   //3.141592...
+
+        5) final
+            - 클래스 내부에서 설정되고, 프로그램 실행 도중 바꿀 수 없다.
+            - final 타입 필드명 [= 초기값];
+            - 부여 방법
+                1) 필드 선언시; final String nation = "대한민국";
+                2) 생성자 내부;
+                    final String ssn;
+                    생성자명(String ssn){ this.ssn = ssn; }
 
