@@ -12,6 +12,11 @@ class Student extends People {
 
     public Student(String name, String ssn, int studentNo) {
         super(name, ssn);
+        /*
+            super()를 통해 하위객체의 생성자에서
+            상위객체의 생성자 중 공통부분인 this.name = name; | this.ssn = ssn;
+            의 중복을 피할 수 있었다.
+         */
         this.studentNo = studentNo;
     }
 }
