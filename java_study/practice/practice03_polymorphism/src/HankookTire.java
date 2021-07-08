@@ -1,4 +1,5 @@
 public class HankookTire extends Tire{
+
     public HankookTire(int maxRotation, String location) {
         super(maxRotation, location);
     }
