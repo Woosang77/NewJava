@@ -1,10 +1,10 @@
 public class Car {
 
     Tire[] tires = {
-            new Tire(6,"앞왼쪽"),
-            new Tire(2, "앞오른쪽"),
-            new Tire(3, "뒤왼쪽"),
-            new Tire(4, "뒤오른쪽")
+            new KumhoTire(5, "앞왼쪽"),
+            new KumhoTire(2, "앞오른쪽"),
+            new KumhoTire(3, "뒤왼쪽"),
+            new KumhoTire(4, "뒤오른쪽")
     };
 
     int run(){
