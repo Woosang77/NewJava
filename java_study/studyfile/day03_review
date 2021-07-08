@@ -20,3 +20,13 @@
             Return type, Method name, Parameter list...
         * 중괄호 내부에서 차이를 둔다.
 
+3. 상속 중 final
+    - final은 최종이라는 의미를 갖는다.
+        필드 : 필드에 지정된 값이 최종값이며, 변경할 수 없다.
+        클래스 : 이 클래스가 최종이며, 상속할 수 없다.
+            public final class 클래스명 {}   --> 클래스 상속 불가
+        메소드 : 이 메소드가 최종이며, 재정의(Override)할 수 없다.
+            public final 타입 메소드명() {
+                - Overriding 불가 -
+            }
+
