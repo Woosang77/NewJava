@@ -1,0 +1,45 @@
+**CH_11 API**
+
+자잘하지만, 막상 사용할 때 헷갈리는 API들 공부
+
+1. Date / Calendar      java.util 소속
+    - 날짜와 시각의 기능
+    1) Date : 날짜 표현 클래스
+        Date now = new Date();
+            * 생성자는 대부분이 Deprecated 되어있어, 기본 생성자만 가능!
+        toString()을 통한 객체 리턴
+        출력값 : Tue Jul 13 13:42:24 KST 2021
+        --> 특정 문자열 포멧을 사용하고 싶다면, SimpleDateFormat Class 사용
+
+    2) Calendar : 달력 표현 클래스
+        **날짜와 시간을 계산하는 방법이 지역, 문화마다 달라서 Calendar는 추상클래스로 new를 통해 생성불가
+        - Calendar에는 날짜와 시간을 계산하는데 필요한 메소드만 선언됨
+        - 보편적 사용을 하기 위해서 Calendar의 정적메소드 getInstance();로 운영체제의 시간을 가져온다.
+            Calendar now = Calendar.getInstance();
+
+        Calendar의 상수들(YEAR, MONTH, WEEK, DAY_OF_WEEK, AM_PM ...)
+            모두 숫자로 되어있다.
+
+
+2. 형식 클래스
+
+    1) SimpleDateFormat : 날짜형식클래스
+        ex) yyyy년 MM월 dd일 hh시 mm분 ss초
+
+        년 : y   | 시(24시간) : H
+        월 : M   | 시(12시간) : h
+        일 : d   | 분 : m
+        요일: E  |  초 : s
+
+    2) MessageFormat : 문자열 형식 클래스
+        문자열이 들어가는 형식을 정해두고, 데이터가 들어올 때 형식에 맞춰 완성시킨다.
+        ex)
+            String id = "java";
+            String name = "오복";
+            String tel = "010-1234-5678";
+
+            String text = "회원 ID: {0} \n회원 이름: {1} \n회원 전화: {2}";
+            String result = MessageFormat.format(text, id, name, tel);
+            System.out.println(result);
+
+

@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/practice/practice02_this()/practice02_this().iml" filepath="$PROJECT_DIR$/practice/practice02_this()/practice02_this().iml" />
       <module fileurl="file://$PROJECT_DIR$/practice/practice03_polymorphism/practice03_polymorphism.iml" filepath="$PROJECT_DIR$/practice/practice03_polymorphism/practice03_polymorphism.iml" />
       <module fileurl="file://$PROJECT_DIR$/practice/practice04_interface/practice04_interface.iml" filepath="$PROJECT_DIR$/practice/practice04_interface/practice04_interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/practice/practice05_API/practice05_API.iml" filepath="$PROJECT_DIR$/practice/practice05_API/practice05_API.iml" />
     </modules>
   </component>
 </project>
