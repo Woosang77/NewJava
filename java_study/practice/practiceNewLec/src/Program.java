@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Program {
     public static void main(String[] args) {
 
+        //ExamConsole --------> Program.main  (dependency)
         ExamConsole console = new ExamConsole();
 
         int menu;

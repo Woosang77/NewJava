@@ -2,10 +2,15 @@ import java.util.Scanner;
 
 public class ExamConsole {
 
-    private ExamList examList = new ExamList();
+//    ExamConsole, ExamList 관계 : Composition Has A 상속관계 (일체형)
 
-    public ExamConsole() {
-    }
+//    private ExamList list;
+//    public ExamConsole() {
+//        list = new ExamList();
+//                ExamConsole의 생성과 동시에 ExamList는 생성된다.(일체형)
+//    }
+//    위 코드와 밑 코드는 같다.
+    private ExamList examList = new ExamList();
 
     public void inputList() {
         Scanner scan = new Scanner(System.in);
@@ -45,7 +50,7 @@ public class ExamConsole {
 
         for (int i = 0; i < size; i++) {
             Exam exam = examList.get(i);
-            int kor = exam.getKor();
+             int kor = exam.getKor();
             int eng = exam.getEng();
             int math = exam.getMath();
 

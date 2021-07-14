@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
 public class ExamList {
+    //ExamList, Exam 관계 : Aggregation Has A 상속관계
+    // ExamList의 생성과 동시에 Exam 객체가 생성되지 않고, 나중에 필요에 따라 추가될 것이다.
     private Exam[] exams;
     private int current;
 
-    public ExamList() {
-        this(3);
-    }
+    public ExamList() { this(3); }
 
     public ExamList(int size){
         exams = new Exam[size];
@@ -26,11 +26,7 @@ public class ExamList {
         current++;
     }
 
-    public Exam get(int i) {
-        return exams[i];
-    }
+    public Exam get(int i) {return exams[i]; }
 
-    public int size() {
-        return current;
-    }
+    public int size() { return current; }
 }
