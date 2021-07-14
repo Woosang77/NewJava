@@ -1,5 +1,8 @@
 public class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("다시만들기");
+        Exam exam = new Exam(1,1,1);
+
+
+        System.out.println(exam.total());
     }
 }
