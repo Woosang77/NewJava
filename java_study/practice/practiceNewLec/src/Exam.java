@@ -1,5 +1,6 @@
 public class Exam {
 
+    //멤버
     private int kor;
     private int eng;
     private int math;

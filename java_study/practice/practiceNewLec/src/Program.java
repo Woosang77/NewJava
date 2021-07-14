@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Program {
     public static void main(String[] args) {
 
-        ExamList list = new ExamList();
+        ExamConsole console = new ExamConsole();
 
         int menu;
         boolean keepLoop = true;
@@ -12,10 +12,10 @@ public class Program {
             menu = inputMenu();
             switch (menu) {
                 case 1:
-                    list.inputList();
+                    console.inputList();
                     break;
                 case 2:
-                    list.printList(2);
+                    console.printList();
                     break;
                 case 3:
                     System.out.println("시스템 종료");
