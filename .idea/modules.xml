@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/IdeaProjects.iml" filepath="$PROJECT_DIR$/.idea/IdeaProjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project/java_project.iml" filepath="$PROJECT_DIR$/java_project/java_project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_study/java_study.iml" filepath="$PROJECT_DIR$/java_study/java_study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_study/practice/practice01_phone/practice01_phone.iml" filepath="$PROJECT_DIR$/java_study/practice/practice01_phone/practice01_phone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_study/practice/practice02_this()/practice02_this().iml" filepath="$PROJECT_DIR$/java_study/practice/practice02_this()/practice02_this().iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_study/practice/practice03_polymorphism/practice03_polymorphism.iml" filepath="$PROJECT_DIR$/java_study/practice/practice03_polymorphism/practice03_polymorphism.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_study/practice/practice04_interface/practice04_interface.iml" filepath="$PROJECT_DIR$/java_study/practice/practice04_interface/practice04_interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_study/practice/practice05_API/practice05_API.iml" filepath="$PROJECT_DIR$/java_study/practice/practice05_API/practice05_API.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_study/practice/practiceNewLec/practiceNewLec.iml" filepath="$PROJECT_DIR$/java_study/practice/practiceNewLec/practiceNewLec.iml" />
+    </modules>
+  </component>
+</project>

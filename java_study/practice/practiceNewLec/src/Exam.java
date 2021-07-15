@@ -1,4 +1,4 @@
-public class Exam {
+public abstract class Exam {
 
     //멤버
     private int kor;
@@ -38,11 +38,12 @@ public class Exam {
     }
 
 
-    public int total() {
-        return kor + eng + math;
+    public abstract int total();
+
+    //protected : 자식클래스만 사용가능능
+   protected int onTotal(){
+        return kor+eng+math;
     }
 
-    public float avg() {
-        return total()/3.0f;
-    }
+    public abstract float avg();
 }

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ExamConsole {
+public abstract class ExamConsole {
 
 //    ExamConsole, ExamList 관계 : Composition Has A 상속관계 (일체형)
 
@@ -12,7 +12,7 @@ public class ExamConsole {
 //    위 코드와 밑 코드는 같다.
     private ExamList examList = new ExamList();
 
-    public void inputList() {
+    public void input() {
         Scanner scan = new Scanner(System.in);
         System.out.println("----------성적 입력---------");
         int kor, eng, math;
@@ -38,14 +38,21 @@ public class ExamConsole {
             }
         } while (math < 0 || 100 < math);
 
-        Exam exam = new Exam(kor, eng, math);
+        Exam exam = makeExam();
+        exam.setKor(kor);
+        exam.setEng(eng);
+        exam.setMath(math);
+        //Exam exam = new Exam(kor, eng, math) Exam이 abstract라 생성 불가
+
+        //이벤트 함수
+        onInput(exam);
 
         examList.add(exam);
     }
 
-    public void printList(){ printList(examList.size());}
+    public void print(){ print(examList.size());}
 
-    public void printList(int size){
+    public void print(int size){
         System.out.println("----------성적 출력---------");
 
         for (int i = 0; i < size; i++) {
@@ -60,9 +67,19 @@ public class ExamConsole {
             System.out.printf("국어: %d\n",kor);
             System.out.printf("영어: %d\n", eng);
             System.out.printf("수학: %d\n", math);
+
+            //이벤트 함수
+            onPrint(exam);
+
             System.out.printf("총점 : %3d\n", total);
             System.out.printf("평균 : %6.2f\n", avg);
             System.out.println("--------------------------");
         }
     }
+
+    protected abstract void onPrint(Exam exam);
+
+    protected abstract void onInput(Exam exam);
+
+    protected abstract Exam makeExam();
 }
