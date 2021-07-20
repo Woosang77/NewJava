@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ProjectPlainTextFileTypeManager">
     <file url="file://$PROJECT_DIR$/java_project/src/setting" />
+    <file url="file://$PROJECT_DIR$/java_study/studyfile/day01_review" />
+    <file url="file://$PROJECT_DIR$/java_study/studyfile/day02_review" />
     <file url="file://$PROJECT_DIR$/java_study/studyfile/day03_review" />
+    <file url="file://$PROJECT_DIR$/java_study/studyfile/day04_review" />
+    <file url="file://$PROJECT_DIR$/java_study/studyfile/day05_API" />
+    <file url="file://$PROJECT_DIR$/java_study/studyfile/day06_Collection" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="1.8 (2)" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/IdeaProjects.iml" filepath="$PROJECT_DIR$/.idea/IdeaProjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_study/practice/practiceNewLec/Part_Collection/Part_Collection.iml" filepath="$PROJECT_DIR$/java_study/practice/practiceNewLec/Part_Collection/Part_Collection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_study/practice/practiceNewLec/Part_OOP/Part_OOP.iml" filepath="$PROJECT_DIR$/java_study/practice/practiceNewLec/Part_OOP/Part_OOP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project/anything/anything.iml" filepath="$PROJECT_DIR$/java_project/anything/anything.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_project/java_project.iml" filepath="$PROJECT_DIR$/java_project/java_project.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_study/java_study.iml" filepath="$PROJECT_DIR$/java_study/java_study.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_study/practice/practice01_phone/practice01_phone.iml" filepath="$PROJECT_DIR$/java_study/practice/practice01_phone/practice01_phone.iml" />

@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class ExamList {
     //ExamList, Exam 관계 : Aggregation Has A 상속관계
     // ExamList의 생성과 동시에 Exam 객체가 생성되지 않고, 나중에 필요에 따라 추가될 것이다.

@@ -7,8 +7,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="practiceNewLec1" level="project" />
-    <orderEntry type="module" module-name="practiceNewLec" />
-    <orderEntry type="module" module-name="Part_OOP" />
   </component>
 </module>
