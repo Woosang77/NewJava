@@ -18,6 +18,7 @@ public class NMemberProgram extends MainProgram {
                 myPage();
                 break;
             case 2:
+                System.out.printf("Bye, %s",user.getId());
                 break;
         }
     }

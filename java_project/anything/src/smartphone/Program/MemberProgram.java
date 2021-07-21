@@ -22,6 +22,7 @@ public class MemberProgram extends MainProgram {
                 myPage();
                 break;
             case 3:
+                System.out.printf("Bye, %s",user.getId());
                 break;
         }
     }

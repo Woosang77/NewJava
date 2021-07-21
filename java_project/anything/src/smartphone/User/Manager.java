@@ -1,8 +1,11 @@
 package smartphone.User;
 
-public class Manager extends User{
+import smartphone.App.Phone;
+
+public class Manager extends User {
 
     String[] menu = {"Phone", "Exit"};
+    private Phone phone;
 
     public Manager() {
         this(null, null);
@@ -16,4 +19,5 @@ public class Manager extends User{
     public String[] getMenu() {
         return menu;
     }
+
 }

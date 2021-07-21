@@ -18,6 +18,7 @@ public class ManagerProgram extends MainProgram {
                 phone();
                 break;
             case 2:
+                System.out.printf("Bye, %s",user.getId());
                 break;
         }
     }
