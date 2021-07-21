@@ -1,5 +1,6 @@
 package smartphone.Program;
 
+import smartphone.App.Phone;
 import smartphone.User.User;
 
 import java.util.Scanner;
@@ -37,7 +38,8 @@ public abstract class MainProgram {
     }
 
     public void phone() {
-        System.out.println("따르릉 전화중");
+        Phone phone = new Phone();
+        phone.searchMenu();
     }
 
     public void myPage() {

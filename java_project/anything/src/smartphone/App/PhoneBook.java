@@ -1,6 +1,7 @@
 package smartphone.App;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -33,7 +34,20 @@ public class PhoneBook {
         }
     }
 
-    public void pullInfo(){
+    public void searchAll(){
+        Iterator iterator = book.iterator();
+        for (int i = 0; i < book.size(); i++) {
+            Info searchedInfo = (Info) iterator.next();
+            System.out.printf("%d. Name : %s\n" +
+                              "    Number : %s\n", i+1, searchedInfo.getName(), searchedInfo.getNumber());
+        }
+    }
+
+    public void fixInfo(){
+
+    }
+
+    public void deleteInfo(){
 
     }
 }
