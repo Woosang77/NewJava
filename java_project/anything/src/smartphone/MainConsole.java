@@ -5,41 +5,36 @@ import java.util.Scanner;
 public class MainConsole {
     MainProgram program;
 
-    public MainConsole() {
-        program = new MainProgram();
+    public void powerOn() {
+        System.out.println("Hello :)");
+        identify();
+        program.start();
     }
 
-    public void powerOn() {
-
+    public void identify(){
         Scanner scan = new Scanner(System.in);
-        int index;
-        int count;
-
-        System.out.println("Hello :)");
-        program.identify();
-
-        Exit:
-        while(true) {
-            program.listUp();
-            count = program.arr.length;
-            index = scan.nextInt();
-
-            if (index > count){
-                System.out.println("> 1~3번의 기능을 선택해주세요");
-                continue;
-            }
-            switch (index) {
-                //전화
-                case 1:
-                    program.phone();
-                    break;
-                case 2:
-                    program.myPage();
-                    break;
-                case 3:
-                    System.out.println("Bye~");
-                    break Exit;
-            }
+        int num = 0;
+        boolean flag = true;
+        while (flag){
+            System.out.print("어떤 신분으로 로그인하시겠습니까?\n" +
+                    "1. 회원\n" +
+                    "2. 비회원\n" +
+                    "3. 관리자\n" +
+                    "> ");
+            num = scan.nextInt();
+            flag = (num<1||num>3) ? true : false;
+        }
+        switch (num){
+            case 1:
+                program = new MemberProgram();
+                break;
+            case 2:
+//                program = new NMemberProgram();
+                break;
+            case 3:
+//                program = new ManagerProgram();
+                break;
         }
     }
+
 }

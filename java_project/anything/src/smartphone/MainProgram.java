@@ -2,52 +2,29 @@ package smartphone;
 
 import java.util.Scanner;
 
-public class MainProgram {
+public abstract class MainProgram {
     User user;
     String[] arr;
 
-    public void listUp() {
-        arr = user.getMenu();
-        for (int i = 0; i < arr.length; i++) {
-            System.out.printf("%d. %s\n", i+1, arr[i]);
-        }
-        System.out.print("> 사용할 기능의 번호를 눌러주세요 : ");
-    }
+    public abstract void start();
 
-    public void identify() {
+    public int listUp() {
         Scanner scan = new Scanner(System.in);
-        String[] idPw;
-        int num = 0;
         boolean flag = true;
+        int num = 0;
         while (flag){
-            System.out.print("어떤 신분으로 로그인하시겠습니까?\n" +
-                    "1. 회원\n" +
-                    "2. 비회원\n" +
-                    "3. 관리자\n" +
-                    "> ");
+            arr = user.getMenu();
+            for (int i = 0; i < arr.length; i++) {
+                System.out.printf("%d. %s\n", i+1, arr[i]);
+            }
+            System.out.print("> 사용할 기능의 번호를 눌러주세요 : ");
             num = scan.nextInt();
-            flag = (num<1||num>3) ? true : false;
+            flag = (num<1||num> arr.length) ? true : false;
         }
-        switch (num){
-            case 1:
-                user = new Member();
-                idPw = setIDPW();
-                user.setId(idPw[0]);
-                user.setPw(idPw[1]);
-                break;
-            case 2:
-                user = new Non_Member();
-                break;
-            case 3:
-                user = new Manager();
-                idPw = setIDPW();
-                user.setId(idPw[0]);
-                user.setPw(idPw[1]);
-                break;
-        }
+        return num;
     }
 
-    private String[] setIDPW() {
+    public String[] setIDPW() {
         Scanner scan = new Scanner(System.in);
         String[] idPw = new String[2];
 
@@ -58,11 +35,10 @@ public class MainProgram {
         return idPw;
     }
 
-//
     public void phone() {
         System.out.println("따르릉 전화중");
     }
-//
+
     public void myPage() {
         System.out.println("Welcome");
     }
