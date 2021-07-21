@@ -1,4 +1,4 @@
-package smartphone;
+package smartphone.User;
 
 public class Manager extends User{
 

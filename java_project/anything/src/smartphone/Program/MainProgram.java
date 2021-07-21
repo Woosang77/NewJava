@@ -1,4 +1,6 @@
-package smartphone;
+package smartphone.Program;
+
+import smartphone.User.User;
 
 import java.util.Scanner;
 
@@ -13,18 +15,17 @@ public abstract class MainProgram {
         boolean flag = true;
         int num = 0;
         while (flag){
-            arr = user.getMenu();
             for (int i = 0; i < arr.length; i++) {
                 System.out.printf("%d. %s\n", i+1, arr[i]);
             }
             System.out.print("> 사용할 기능의 번호를 눌러주세요 : ");
             num = scan.nextInt();
-            flag = (num<1||num> arr.length) ? true : false;
+            flag = num < 1 || num > arr.length;
         }
         return num;
     }
 
-    public String[] setIDPW() {
+    public String[] setIdPw() {
         Scanner scan = new Scanner(System.in);
         String[] idPw = new String[2];
 

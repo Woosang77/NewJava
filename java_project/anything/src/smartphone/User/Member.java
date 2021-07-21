@@ -1,4 +1,4 @@
-package smartphone;
+package smartphone.User;
 
 //회원
 public class Member extends User {

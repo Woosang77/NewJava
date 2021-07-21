@@ -1,5 +1,10 @@
 package smartphone;
 
+import smartphone.Program.MainProgram;
+import smartphone.Program.ManagerProgram;
+import smartphone.Program.MemberProgram;
+import smartphone.Program.NMemberProgram;
+
 import java.util.Scanner;
 
 public class MainConsole {
@@ -16,24 +21,25 @@ public class MainConsole {
         int num = 0;
         boolean flag = true;
         while (flag){
-            System.out.print("어떤 신분으로 로그인하시겠습니까?\n" +
-                    "1. 회원\n" +
-                    "2. 비회원\n" +
-                    "3. 관리자\n" +
-                    "> ");
+            System.out.print("어떤 신분으로 로그인하시겠습니까\n" +
+                             "1. 회원\n" +
+                             "2. 비회원\n" +
+                             "3. 관리자\n");
             num = scan.nextInt();
-            flag = (num<1||num>3) ? true : false;
+            flag = num < 1 || num > 3;
         }
         switch (num){
             case 1:
                 program = new MemberProgram();
                 break;
             case 2:
-//                program = new NMemberProgram();
+                program = new NMemberProgram();
                 break;
             case 3:
-//                program = new ManagerProgram();
+                program = new ManagerProgram();
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + num);
         }
     }
 

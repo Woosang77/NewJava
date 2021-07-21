@@ -1,4 +1,4 @@
-package smartphone;
+package smartphone.User;
 
 public class Non_Member extends User{
 

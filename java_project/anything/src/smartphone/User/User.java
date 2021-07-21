@@ -1,11 +1,10 @@
-package smartphone;
+package smartphone.User;
 
 public abstract class User {
     private String id;
     private String pw;
 
     public User() {
-
     }
 
     public User(String id, String pw) {
