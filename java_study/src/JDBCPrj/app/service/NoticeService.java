@@ -15,13 +15,24 @@ public class NoticeService {
     private String driver = "oracle.jdbc.driver.OracleDriver";
 
     //JDBC 정보 출력
-    public List<Notice> getList() throws ClassNotFoundException, SQLException {
+    public List<Notice> getList(int page) throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM NOTICE";
+        int start = 10*(page-1)+1;
+        int end = 10*page;
+
+
+        String sql =
+                "select * from (" +
+                "    SELECT ROWNUM NUM, N.* FROM (" +
+                "        SELECT * FROM notice ORDER BY REGDATE DESC" +
+                "    ) N " +
+                ") WHERE NUM BETWEEN ? AND ?";
         Class.forName(driver);
         Connection con = DriverManager.getConnection(url, uid, upwd);
-        Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery(sql);
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setInt(1, start);
+        st.setInt(2, end);
+        ResultSet rs = st.executeQuery();
 
         List<Notice> list = new ArrayList<>();
 

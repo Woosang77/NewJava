@@ -7,24 +7,32 @@ import java.sql.SQLException;
 public class Program5 {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         NoticeConsole console = new NoticeConsole();
-        console.printNoticeList();
-        int menu = console.inputNoticeMenu();
 
-        switch (menu){
-            case 1: //상세조회
-                break;
+        EXIT:
+        while (true){
+            console.printNoticeList();
+            int menu = console.inputNoticeMenu();
 
-            case 2: //이전
-                break;
+            switch (menu){
+                case 1: //상세조회
 
-            case 3: //다음
-                break;
+                    break;
+                case 2: //이전
 
-            case 4: //글쓰기
-                break;
+                    break;
+                case 3: //다음
 
+                    break;
+                case 4: //글쓰기
+
+                    break;
+                case 5: //종료
+                    System.out.println("Bye~~~");
+                    break EXIT;
+                default:
+                    System.out.println("<<< 사용법 : 1~5를 입력해주세요. >>>");
+                    break;
+            }
         }
-
-
     }
 }
