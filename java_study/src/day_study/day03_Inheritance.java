@@ -1,3 +1,5 @@
+package day_study;
+
 public class day03_Inheritance {
     public static void main(String[] args) {
         Student student = new Student("오복", "123", 1);

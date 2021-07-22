@@ -1,3 +1,5 @@
+package day_study;
+
 import java.util.Calendar;
 
     //Calendar 클래스 사용

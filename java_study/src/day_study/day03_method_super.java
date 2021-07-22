@@ -1,3 +1,5 @@
+package day_study;
+
 public class day03_method_super {
     public static void main(String[] args) {
         SupersonicAirplane sa = new SupersonicAirplane();

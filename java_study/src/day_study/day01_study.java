@@ -1,3 +1,5 @@
+package day_study;
+
 public class day01_study {
     public static void main(String[] args) {
         int intValue = 1000;
