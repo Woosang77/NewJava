@@ -1,4 +1,4 @@
-package JDBCPrj;
+package JDBCPrj.ex1;
 
 import java.sql.*;
 import java.util.Date;
