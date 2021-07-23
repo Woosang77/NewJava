@@ -15,23 +15,18 @@ public class NoticeService {
     private String driver = "oracle.jdbc.driver.OracleDriver";
 
     //JDBC 정보 출력
-    public List<Notice> getList(int page) throws ClassNotFoundException, SQLException {
+    public List<Notice> getList(int page, String field, String query) throws ClassNotFoundException, SQLException {
 
         int start = 10*(page-1)+1;
         int end = 10*page;
 
-
-        String sql =
-                "select * from (" +
-                "    SELECT ROWNUM NUM, N.* FROM (" +
-                "        SELECT * FROM notice ORDER BY REGDATE DESC" +
-                "    ) N " +
-                ") WHERE NUM BETWEEN ? AND ?";
+        String sql = "select * from notice_view WHERE "+field+" LIKE ? AND NUM BETWEEN ? AND ?";
         Class.forName(driver);
         Connection con = DriverManager.getConnection(url, uid, upwd);
         PreparedStatement st = con.prepareStatement(sql);
-        st.setInt(1, start);
-        st.setInt(2, end);
+        st.setString(1,"%"+query+"%");
+        st.setInt(2, start);
+        st.setInt(3, end);
         ResultSet rs = st.executeQuery();
 
         List<Notice> list = new ArrayList<>();
@@ -65,6 +60,26 @@ public class NoticeService {
 
         return list;
     }
+
+    //Scarlar
+    public int getCount(String field, String query) throws ClassNotFoundException, SQLException {
+
+        int count = 0;
+        String sql = "select COUNT(id) count FROM notice where "+field+" like ? ";
+        Class.forName(driver);
+        Connection con = DriverManager.getConnection(url, uid, upwd);
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1,"%"+query+"%");
+        ResultSet rs = st.executeQuery();
+        if (rs.next()) {
+            count = rs.getInt("count");
+        }
+        rs.close();
+        st.close();
+        con.close();
+        return count;
+    }
+
     //JDBC 정보 입력
     public int insert(Notice notice) throws ClassNotFoundException, SQLException {
         String title = notice.getTitle();
@@ -140,4 +155,5 @@ public class NoticeService {
 
         return result;
     }
+
 }
