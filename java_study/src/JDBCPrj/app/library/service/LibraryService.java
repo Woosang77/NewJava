@@ -33,22 +33,16 @@ public class LibraryService {
 
         while(rs.next()){
             //Notice Info
-            int id = rs.getInt("ID");
             String title = rs.getString("TITLE");
-            String writerId = rs.getString("WRITER_ID");
-            Date regDate = rs.getDate("REGDATE");
-            String content = rs.getString("CONTENT");
-            int hit = rs.getInt("HIT");
-            String files = rs.getString("FILES");
+            String writer = rs.getString("WRITER");
+            String clazz = rs.getString("FILES");
+            int id = rs.getInt("ID");
 
             Book book = new Book(
-                    id,
                     title,
-                    writerId,
-                    regDate,
-                    content,
-                    hit,
-                    files
+                    writer,
+                    clazz,
+                    id
             );
 
             list.add(book);
@@ -83,24 +77,21 @@ public class LibraryService {
     //JDBC 정보 입력
     public int insert(Book book) throws ClassNotFoundException, SQLException {
         String title = book.getTitle();
-        String writer_id = book.getWriterId();
-        String content = book.getContent();
-        String files = book.getFiles();
+        String writer = book.getWriter();
+        String clazz = book.getClazz();
 
-        String sql = "INSERT INTO notice (" +
+        String sql = "INSERT INTO book (" +
                 "    title," +
-                "    writer_id," +
-                "    content," +
-                "    files" +
-                ") VALUES (?,?,?,?)";
+                "    writer," +
+                "    class" +
+                ") VALUES (?,?,?)";
 
         Class.forName(driver);
         Connection con = DriverManager.getConnection(url, uid, upwd);
         PreparedStatement st = con.prepareStatement(sql);
         st.setString(1,title);
-        st.setString(2,writer_id);
-        st.setString(3,content);
-        st.setString(4,files);
+        st.setString(2,writer);
+        st.setString(3,clazz);
 
         int result = st.executeUpdate();
 
@@ -113,8 +104,8 @@ public class LibraryService {
     public int update(Book book) throws ClassNotFoundException, SQLException {
 
         String title = book.getTitle();
-        String content = book.getContent();
-        String files = book.getFiles();
+        String writer = book.getWriter();
+        String clazz = book.getClazz();
         int id = book.getId();
 
         String sql = "update notice " +
@@ -128,8 +119,8 @@ public class LibraryService {
         Connection con = DriverManager.getConnection(url,  uid, upwd);
         PreparedStatement st = con.prepareStatement(sql);
         st.setString(1,title);
-        st.setString(2,content);
-        st.setString(3,files);
+        st.setString(2,writer);
+        st.setString(3,clazz);
         st.setInt(4,id);
 
         int result = st.executeUpdate();

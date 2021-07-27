@@ -13,12 +13,12 @@ public class MainProgram {
         boolean flag = UConsole.showOption();
         EXIT:
         while (!flag){
+            //전체 도서 보여주기
             console.printLibraryList();
             int menu = console.inputLibraryMenu();
-
             switch (menu){
-                case 1: //상세조회
-
+                case 1: //도서 검색
+                    console.inputSearchWord();
                     break;
                 case 2: //이전
                     console.movePrevList();
@@ -26,17 +26,18 @@ public class MainProgram {
                 case 3: //다음
                     console.moveNextList();
                     break;
-                case 4: //글쓰기
-
+                case 4: //도서 등록
+                    console.registerBook();
                     break;
-                case 5://검색
-                    console.inputSearchWord();
+                case 5: //도서 대출
                     break;
-                case 6: //종료
+                case 6: //도서 반납
+                    break;
+                case 7: //나가기
                     System.out.println("Bye~~~");
                     break EXIT;
                 default:
-                    System.out.println("<<< 사용법 : 1~5를 입력해주세요. >>>");
+                    System.out.println("<<< 사용법 : 1~7를 입력해주세요. >>>");
                     break;
             }
         }

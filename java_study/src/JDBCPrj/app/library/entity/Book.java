@@ -4,32 +4,25 @@ import java.util.Date;
 
 public class Book {
 
-    private int id;
     private String title;
-    private String writerId;
-    private Date regDate;
-    private String content;
-    private int hit;
-    private String files;
+    private String writer;
+    private String clazz;
+    private int id;
 
     public Book() {
 
     }
-    public Book(int id, String title, String writerId, Date regDate, String content, int hit, String files) {
-        this.id = id;
+
+    public Book(String title, String writer, String clazz) {
         this.title = title;
-        this.writerId = writerId;
-        this.regDate = regDate;
-        this.content = content;
-        this.hit = hit;
-        this.files = files;
+        this.writer = writer;
+        this.clazz = clazz;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
+    public Book(String title, String writer, String clazz, int id) {
+        this.title = title;
+        this.writer = writer;
+        this.clazz = clazz;
         this.id = id;
     }
 
@@ -41,43 +34,23 @@ public class Book {
         this.title = title;
     }
 
-    public String getWriterId() {
-        return writerId;
+    public String getWriter() {
+        return writer;
     }
 
-    public void setWriterId(String writerId) {
-        this.writerId = writerId;
+    public void setWriter(String writer) {
+        this.writer = writer;
     }
 
-    public Date getRegDate() {
-        return regDate;
+    public String getClazz() {
+        return clazz;
     }
 
-    public void setRegDate(Date regDate) {
-        this.regDate = regDate;
+    public void setClazz(String clazz) {
+        this.clazz = clazz;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public int getHit() {
-        return hit;
-    }
-
-    public void setHit(int hit) {
-        this.hit = hit;
-    }
-
-    public String getFiles() {
-        return files;
-    }
-
-    public void setFiles(String files) {
-        this.files = files;
+    public int getId() {
+        return id;
     }
 }
