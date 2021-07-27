@@ -1,4 +1,4 @@
-package JDBCPrj.app.entity;
+package JDBCPrj.app.notice.entity;
 
 import java.util.Date;
 

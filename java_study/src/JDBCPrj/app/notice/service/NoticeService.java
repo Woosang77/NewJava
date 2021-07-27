@@ -1,6 +1,6 @@
-package JDBCPrj.app.service;
+package JDBCPrj.app.notice.service;
 
-import JDBCPrj.app.entity.Notice;
+import JDBCPrj.app.notice.entity.Notice;
 
 import java.sql.*;
 import java.util.ArrayList;

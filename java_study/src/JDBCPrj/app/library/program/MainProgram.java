@@ -1,18 +1,20 @@
-package JDBCPrj.app.program;
+package JDBCPrj.app.library.program;
 
-import JDBCPrj.app.console.NoticeConsole;
+import JDBCPrj.app.library.console.LibraryConsole;
+import JDBCPrj.app.library.console.UserConsole;
 
 import java.sql.SQLException;
 
-public class Program5 {
+public class MainProgram {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        NoticeConsole console = new NoticeConsole();
-//        int page;
+        LibraryConsole console = new LibraryConsole();
+        UserConsole UConsole = new UserConsole();
 
+        boolean flag = UConsole.showOption();
         EXIT:
-        while (true){
-            console.printNoticeList();
-            int menu = console.inputNoticeMenu();
+        while (!flag){
+            console.printLibraryList();
+            int menu = console.inputLibraryMenu();
 
             switch (menu){
                 case 1: //상세조회
@@ -20,11 +22,9 @@ public class Program5 {
                     break;
                 case 2: //이전
                     console.movePrevList();
-//                    page--;
                     break;
                 case 3: //다음
                     console.moveNextList();
-//                    page++;
                     break;
                 case 4: //글쓰기
 

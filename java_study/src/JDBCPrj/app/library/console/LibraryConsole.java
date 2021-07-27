@@ -1,36 +1,40 @@
-package JDBCPrj.app.console;
+package JDBCPrj.app.library.console;
 
-import JDBCPrj.app.entity.Notice;
-import JDBCPrj.app.service.NoticeService;
+import JDBCPrj.app.library.entity.Book;
+import JDBCPrj.app.library.entity.User;
+import JDBCPrj.app.library.service.LibraryService;
+import JDBCPrj.app.library.service.UserService;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
-public class NoticeConsole {
+public class LibraryConsole {
 
-    private NoticeService service;
+    private LibraryService LService;
+
     private int page;
     private String searchField;
     private String searchWord;
 
-    public NoticeConsole() {
-        service = new NoticeService();
+
+    public LibraryConsole() {
+        LService = new LibraryService();
         page = 1;
         searchField = "TITLE";
         searchWord = "";
     }
 
-    public void printNoticeList() throws SQLException, ClassNotFoundException {
-        List<Notice> list = service.getList(page, searchField, searchWord);
-        int count = service.getCount(searchField, searchWord);
+    public void printLibraryList() throws SQLException, ClassNotFoundException {
+        List<Book> list = LService.getList(page, searchField, searchWord);
+        int count = LService.getCount(searchField, searchWord);
         int lastPage = (count/10);
         lastPage = (count%10)>0 ? lastPage+1 : lastPage ;
 
         System.out.println("────────────────────────────────────────────");
-        System.out.printf("             <공지사항> 총 %d게시글\n", count);
+        System.out.printf("             <도서 목록> 총 %d권\n", count);
         System.out.println("────────────────────────────────────────────");
-        for (Notice n : list) {
+        for (Book n : list) {
             System.out.printf("%d. %s / %s / %s\n",
                     n.getId(),
                     n.getTitle(),
@@ -41,7 +45,7 @@ public class NoticeConsole {
         System.out.printf("                 %d / %d pages      \n",page, lastPage);
     }
 
-    public int inputNoticeMenu() {
+    public int inputLibraryMenu() {
         Scanner scan = new Scanner(System.in);
 
         System.out.print("1.상세조회 / 2.이전 / 3.다음 / 4.글쓰기 / 5.검색 / 6.종료  >");
@@ -62,7 +66,7 @@ public class NoticeConsole {
     }
 
     public void moveNextList() throws SQLException, ClassNotFoundException {
-        int count = service.getCount(searchField, searchWord);
+        int count = LService.getCount(searchField, searchWord);
         int lastPage = (count/10);
         lastPage = count%10>0? lastPage+1 : lastPage;
         if (page== lastPage){
@@ -83,4 +87,6 @@ public class NoticeConsole {
         System.out.print("검색어 > ");
         searchWord = scan.nextLine();
     }
+
+
 }
