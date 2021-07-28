@@ -20,7 +20,7 @@ public class LibraryService {
         int start = 10*(page-1)+1;
         int end = 10*page;
 
-        String sql = "select * from notice_view WHERE "+field+" LIKE ? AND NUM BETWEEN ? AND ?";
+        String sql = "select * from book_view WHERE "+field+" LIKE ? AND NUM BETWEEN ? AND ?";
         Class.forName(driver);
         Connection con = DriverManager.getConnection(url, uid, upwd);
         PreparedStatement st = con.prepareStatement(sql);
@@ -35,7 +35,7 @@ public class LibraryService {
             //Notice Info
             String title = rs.getString("TITLE");
             String writer = rs.getString("WRITER");
-            String clazz = rs.getString("FILES");
+            String clazz = rs.getString("CLASS");
             int id = rs.getInt("ID");
 
             Book book = new Book(
@@ -59,7 +59,7 @@ public class LibraryService {
     public int getCount(String field, String query) throws ClassNotFoundException, SQLException {
 
         int count = 0;
-        String sql = "select COUNT(id) count FROM notice where "+field+" like ? ";
+        String sql = "select COUNT(id) count FROM book_view where "+field+" like ? ";
         Class.forName(driver);
         Connection con = DriverManager.getConnection(url, uid, upwd);
         PreparedStatement st = con.prepareStatement(sql);
@@ -81,10 +81,11 @@ public class LibraryService {
         String clazz = book.getClazz();
 
         String sql = "INSERT INTO book (" +
+                "    id," +
                 "    title," +
                 "    writer," +
                 "    class" +
-                ") VALUES (?,?,?)";
+                ") VALUES (BOOK_SEQ.nextval,?,?,?)";
 
         Class.forName(driver);
         Connection con = DriverManager.getConnection(url, uid, upwd);
