@@ -8,6 +8,7 @@ public class Book {
     private String writer;
     private String clazz;
     private int id;
+    private String rentable;
 
     public Book() {
 
@@ -19,15 +20,16 @@ public class Book {
         this.clazz = clazz;
     }
 
-    public Book(String title, String writer, String clazz, int id) {
+    public String getTitle() {
+        return title;
+    }
+
+    public Book(String title, String writer, String clazz, int id, String rentable) {
         this.title = title;
         this.writer = writer;
         this.clazz = clazz;
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
+        this.rentable = rentable;
     }
 
     public void setTitle(String title) {
@@ -52,5 +54,17 @@ public class Book {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getRentable() {
+        return rentable;
+    }
+
+    public void setRentable(String rentable) {
+        this.rentable = rentable;
     }
 }

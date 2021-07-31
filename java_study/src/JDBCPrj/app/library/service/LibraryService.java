@@ -33,16 +33,19 @@ public class LibraryService {
 
         while(rs.next()){
             //Notice Info
+
             String title = rs.getString("TITLE");
             String writer = rs.getString("WRITER");
             String clazz = rs.getString("CLASS");
             int id = rs.getInt("ID");
+            String rentable = rs.getString("RENTABLE");
 
             Book book = new Book(
                     title,
                     writer,
                     clazz,
-                    id
+                    id,
+                    rentable
             );
 
             list.add(book);
@@ -53,6 +56,39 @@ public class LibraryService {
         con.close();
 
         return list;
+    }
+
+    public Book getRentList(int rentID) throws ClassNotFoundException, SQLException {
+
+        String sql = "select * from book_view where id like ? and rentable = 'Y'";
+        Class.forName(driver);
+        Connection con = DriverManager.getConnection(url, uid, upwd);
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setInt(1,rentID);
+        ResultSet rs = st.executeQuery();
+
+        if (rs.next()){
+            String title = rs.getString("TITLE");
+            String writer = rs.getString("WRITER");
+            String clazz = rs.getString("CLASS");
+            int id = rs.getInt("ID");
+            String rentable = rs.getString("RENTABLE");
+
+            Book book = new Book(
+                    title,
+                    writer,
+                    clazz,
+                    id,
+                    rentable
+            );
+            return book;
+        }
+
+        rs.close();
+        st.close();
+        con.close();
+
+        return null;
     }
 
     //Scarlar
@@ -107,13 +143,15 @@ public class LibraryService {
         String title = book.getTitle();
         String writer = book.getWriter();
         String clazz = book.getClazz();
+        String rentable = book.getRentable();
         int id = book.getId();
 
-        String sql = "update notice " +
+        String sql = "update book " +
                 "set" +
                 "    title = ?," +
-                "    content = ?," +
-                "    files = ?" +
+                "    writer = ?," +
+                "    class = ?," +
+                "    rentable = ?"+
                 "WHERE id = ?";
 
         Class.forName(driver);
@@ -122,7 +160,8 @@ public class LibraryService {
         st.setString(1,title);
         st.setString(2,writer);
         st.setString(3,clazz);
-        st.setInt(4,id);
+        st.setString(4,rentable);
+        st.setInt(5,id);
 
         int result = st.executeUpdate();
 

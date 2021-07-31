@@ -30,6 +30,7 @@ public class MainProgram {
                     console.registerBook();
                     break;
                 case 5: //도서 대출
+                    console.rentBook();
                     break;
                 case 6: //도서 반납
                     break;

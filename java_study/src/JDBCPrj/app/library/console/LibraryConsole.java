@@ -32,13 +32,15 @@ public class LibraryConsole {
         lastPage = (count % 10) > 0 ? lastPage + 1 : lastPage;
 
         System.out.println("────────────────────────────────────────────");
-        System.out.printf("             <도서 목록> 총 %d권\n", count);
+        System.out.printf("           <전자 도서관>      총 %d권\n", count);
         System.out.println("────────────────────────────────────────────");
         for (Book n : list) {
-            System.out.printf(" %s / %s / %s\n",
+            System.out.printf("%d. %s | %s | %s | %s\n",
+                    n.getId(),
                     n.getTitle(),
                     n.getWriter(),
-                    n.getClazz());
+                    n.getClazz(),
+                    n.getRentable());
         }
         System.out.println("────────────────────────────────────────────");
         System.out.printf("                 %d / %d pages      \n", page, lastPage);
@@ -93,14 +95,48 @@ public class LibraryConsole {
         String writer;
         String clazz;
 
-        System.out.println("제목 : ");
+        System.out.print("제목 : ");
         title = scan.nextLine();
-        System.out.println("작가 : ");
+        System.out.print("작가 : ");
         writer = scan.nextLine();
-        System.out.println("분류 : ");
+        System.out.print("분류 : ");
         clazz = scan.nextLine();
         Book book = new Book(title, writer, clazz);
         LService.insert(book);
 
+    }
+
+    public void rentBook() throws SQLException, ClassNotFoundException {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("대여할 책의 번호를 입력해주세요 : ");
+        int rentID = scan.nextInt();
+        Book rentBook = LService.getRentList(rentID);
+        try{
+            System.out.printf("%s | %s | %s\n",
+                            rentBook.getTitle(),
+                            rentBook.getWriter(),
+                            rentBook.getClazz()
+                    );
+        } catch (NullPointerException e){
+            System.out.println("────────────────────────────────────────────");
+            System.out.println("대여할 수 없는 상태입니다.\n" +
+                    "* 대출여부나 번호를 다시 확인해주세요.");
+            return;
+        }
+        while(true){
+            System.out.println("대여 하시겠습니까? [1(네) | 2(아니오)]");
+            System.out.print("> ");
+            int answer = scan.nextInt();
+            if(answer == 1){
+                System.out.println("대출이 완료되었습니다.");
+                rentBook.setRentable("N");
+                LService.update(rentBook);
+                break;
+            }else if (answer ==2){
+                break;
+            }else{
+                System.out.println("다시 입력해주세요");
+            }
+        }
     }
 }
