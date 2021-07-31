@@ -137,31 +137,57 @@ public class LibraryService {
 
         return result;
     }
-    //JDBC 정보 수정
-    public int update(Book book) throws ClassNotFoundException, SQLException {
+//    //책 정보 수정
+//    public int update(Book book, String lender_id) throws ClassNotFoundException, SQLException {
+//
+//        String title = book.getTitle();
+//        String writer = book.getWriter();
+//        String clazz = book.getClazz();
+//        String rentable = book.getRentable();
+//        int id = book.getId();
+//
+//        String sql = "update book " +
+//                "set" +
+//                "    title = ?," +
+//                "    writer = ?," +
+//                "    class = ?," +
+//                "    rentable = ?"+
+//                "WHERE id = ?";
+//
+//        Class.forName(driver);
+//        Connection con = DriverManager.getConnection(url,  uid, upwd);
+//        PreparedStatement st = con.prepareStatement(sql);
+//        st.setString(1,title);
+//        st.setString(2,writer);
+//        st.setString(3,clazz);
+//        st.setString(4,rentable);
+//        st.setInt(5,id);
+//
+//        int result = st.executeUpdate();
+//
+//        st.close();
+//        con.close();
+//
+//        return result;
+//    }
+    //책 대출
+    public int update(Book book, String lender_id) throws ClassNotFoundException, SQLException {
 
-        String title = book.getTitle();
-        String writer = book.getWriter();
-        String clazz = book.getClazz();
         String rentable = book.getRentable();
         int id = book.getId();
 
         String sql = "update book " +
                 "set" +
-                "    title = ?," +
-                "    writer = ?," +
-                "    class = ?," +
-                "    rentable = ?"+
+                "    rentable = ?,"+
+                "    lender_id = ?"+
                 "WHERE id = ?";
 
         Class.forName(driver);
         Connection con = DriverManager.getConnection(url,  uid, upwd);
         PreparedStatement st = con.prepareStatement(sql);
-        st.setString(1,title);
-        st.setString(2,writer);
-        st.setString(3,clazz);
-        st.setString(4,rentable);
-        st.setInt(5,id);
+        st.setString(1,rentable);
+        st.setString(2, lender_id);
+        st.setInt(3,id);
 
         int result = st.executeUpdate();
 

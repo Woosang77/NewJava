@@ -25,7 +25,7 @@ public class UserService {
         int result = st.executeUpdate();
 
         boolean flag = true;
-        if (result>0){
+        if (result<1){
             flag = false;
         }
 
@@ -81,8 +81,8 @@ public class UserService {
         st.setString(3,id);
         st.setString(4,pw);
         st.setString(5,gender);
-        st.setString(6,phone);
-        st.setString(7,email);
+        st.setString(6,email);
+        st.setString(7,phone);
 
         int result = st.executeUpdate();
         if (result == 1){

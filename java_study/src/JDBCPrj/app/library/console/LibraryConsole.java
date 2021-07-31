@@ -106,7 +106,7 @@ public class LibraryConsole {
 
     }
 
-    public void rentBook() throws SQLException, ClassNotFoundException {
+    public void rentBook(User user) throws SQLException, ClassNotFoundException {
         Scanner scan = new Scanner(System.in);
         System.out.print("대여할 책의 번호를 입력해주세요 : ");
         int rentID = scan.nextInt();
@@ -130,7 +130,7 @@ public class LibraryConsole {
             if(answer == 1){
                 System.out.println("대출이 완료되었습니다.");
                 rentBook.setRentable("N");
-                LService.update(rentBook);
+                LService.update(rentBook, user.getId());
                 break;
             }else if (answer ==2){
                 break;

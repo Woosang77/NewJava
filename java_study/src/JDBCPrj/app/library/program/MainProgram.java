@@ -15,11 +15,6 @@ public class MainProgram {
         EXIT:
         while (user.isFlag()){
             //전체 도서 보여주기
-            System.out.printf("%s. %s. %s. %s",
-                    user.getName(),
-                    user.getId(),
-                    user.getPw(),
-                    user.isFlag());
             console.printLibraryList();
             int menu = console.inputLibraryMenu();
             switch (menu){
@@ -36,7 +31,7 @@ public class MainProgram {
                     console.registerBook();
                     break;
                 case 5: //도서 대출
-                    console.rentBook();
+                    console.rentBook(user);
                     break;
                 case 6: //도서 반납
                     console.returnBook();
