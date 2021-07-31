@@ -6,6 +6,7 @@ import JDBCPrj.app.library.service.LibraryService;
 import JDBCPrj.app.library.service.UserService;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -143,8 +144,11 @@ public class LibraryConsole {
     public void returnBook(User user) throws SQLException, ClassNotFoundException {
         Scanner scan = new Scanner(System.in);
         String rentId = user.getId();
-
-        List<Book> list = LService.getList(1, "LENDER_ID", rentId);
+        List<Book> list = LService.getList(2, "LENDER_ID", rentId);
+        if (list.size() == 0){
+            System.out.println("반납 가능한 도서가 없습니다.");
+            return;
+        }
         System.out.println("────────────────────────────────────────────");
         System.out.printf("%s님의 대여 도서\n", user.getName());
         for (Book n : list) {
@@ -155,11 +159,20 @@ public class LibraryConsole {
                     n.getClazz());
         }
         System.out.println("────────────────────────────────────────────");
-        System.out.println("반납할 도서의 번호를 입력해주세요.");
-        System.out.print("> ");
-        int returnBookNum = scan.nextInt();
-        Book book = new Book(returnBookNum);
-        book.setRentable("Y");
-        LService.update(book, null);
+        do {
+            System.out.println("반납할 도서의 번호를 입력해주세요.");
+            System.out.print("> ");
+            int returnBookNum = scan.nextInt();
+            List<Integer> lt = new ArrayList<>();
+            for (Book b:list) {lt.add(b.getId());}
+            if (lt.contains(returnBookNum)){
+                Book book = new Book(returnBookNum);
+                book.setRentable("Y");
+                LService.update(book, null);
+                break;
+            }else {
+                System.out.println("해당 번호의 도서를 대출하지 않았습니다.");
+            }
+        }while (true);
     }
 }

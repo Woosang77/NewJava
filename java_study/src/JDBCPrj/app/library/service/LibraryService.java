@@ -28,18 +28,15 @@ public class LibraryService {
         st.setInt(2, start);
         st.setInt(3, end);
         ResultSet rs = st.executeQuery();
-
         List<Book> list = new ArrayList<>();
 
         while(rs.next()){
             //Notice Info
-
             String title = rs.getString("TITLE");
             String writer = rs.getString("WRITER");
             String clazz = rs.getString("CLASS");
             int id = rs.getInt("ID");
             String rentable = rs.getString("RENTABLE");
-
             Book book = new Book(
                     title,
                     writer,
@@ -47,7 +44,6 @@ public class LibraryService {
                     id,
                     rentable
             );
-
             list.add(book);
         };
 
@@ -170,7 +166,7 @@ public class LibraryService {
 //
 //        return result;
 //    }
-    //책 대출
+    //책 대출, 반납
     public int update(Book book, String lender_id) throws ClassNotFoundException, SQLException {
 
         String rentable = book.getRentable();
