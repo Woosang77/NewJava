@@ -140,7 +140,26 @@ public class LibraryConsole {
         }
     }
 
-    public void returnBook() {
+    public void returnBook(User user) throws SQLException, ClassNotFoundException {
+        Scanner scan = new Scanner(System.in);
+        String rentId = user.getId();
 
+        List<Book> list = LService.getList(1, "LENDER_ID", rentId);
+        System.out.println("────────────────────────────────────────────");
+        System.out.printf("%s님의 대여 도서\n", user.getName());
+        for (Book n : list) {
+            System.out.printf("%d. %s | %s | %s \n",
+                    n.getId(),
+                    n.getTitle(),
+                    n.getWriter(),
+                    n.getClazz());
+        }
+        System.out.println("────────────────────────────────────────────");
+        System.out.println("반납할 도서의 번호를 입력해주세요.");
+        System.out.print("> ");
+        int returnBookNum = scan.nextInt();
+        Book book = new Book(returnBookNum);
+        book.setRentable("Y");
+        LService.update(book, null);
     }
 }

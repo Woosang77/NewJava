@@ -34,7 +34,7 @@ public class MainProgram {
                     console.rentBook(user);
                     break;
                 case 6: //도서 반납
-                    console.returnBook();
+                    console.returnBook(user);
                     break;
                 case 7: //나가기
                     System.out.println("Bye~~~");

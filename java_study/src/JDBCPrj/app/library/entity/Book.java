@@ -10,6 +10,10 @@ public class Book {
     private int id;
     private String rentable;
 
+    public Book(int id) {
+        this.id = id;
+    }
+
     public Book(String title, String writer, String clazz) {
         this.title = title;
         this.writer = writer;
