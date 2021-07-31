@@ -1,7 +1,5 @@
 package JDBCPrj.app.library.entity;
 
-import java.util.Date;
-
 public class Book {
 
     private String title;

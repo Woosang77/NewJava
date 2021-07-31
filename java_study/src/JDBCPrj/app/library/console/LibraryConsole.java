@@ -3,7 +3,6 @@ package JDBCPrj.app.library.console;
 import JDBCPrj.app.library.entity.Book;
 import JDBCPrj.app.library.entity.User;
 import JDBCPrj.app.library.service.LibraryService;
-import JDBCPrj.app.library.service.UserService;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -144,7 +143,7 @@ public class LibraryConsole {
     public void returnBook(User user) throws SQLException, ClassNotFoundException {
         Scanner scan = new Scanner(System.in);
         String rentId = user.getId();
-        List<Book> list = LService.getList(2, "LENDER_ID", rentId);
+        List<Book> list = LService.getReturnList(rentId);
         if (list.size() == 0){
             System.out.println("반납 가능한 도서가 없습니다.");
             return;

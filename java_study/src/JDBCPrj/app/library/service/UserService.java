@@ -1,11 +1,8 @@
 package JDBCPrj.app.library.service;
 
-import JDBCPrj.app.library.entity.Book;
 import JDBCPrj.app.library.entity.User;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserService {
 
@@ -17,7 +14,7 @@ public class UserService {
 
 
     public boolean checkID(String id) throws ClassNotFoundException, SQLException {
-        String sql = "SELECT NAME from MEMBER WHERE id LIKE ?";
+        String sql = "SELECT * from MEMBER WHERE id = ?";
         Class.forName(driver);
         Connection con = DriverManager.getConnection(url, uId, uPwd);
         PreparedStatement st = con.prepareStatement(sql);
@@ -25,7 +22,7 @@ public class UserService {
         int result = st.executeUpdate();
 
         boolean flag = true;
-        if (result<1){
+        if (result>0){
             flag = false;
         }
 
@@ -123,7 +120,6 @@ public class UserService {
                     uphone,
                     uemail
             );
-
         };
 
         rs.close();

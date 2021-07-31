@@ -1,7 +1,6 @@
 package JDBCPrj.app.library.console;
 
 import JDBCPrj.app.library.entity.User;
-import JDBCPrj.app.library.program.MainProgram;
 import JDBCPrj.app.library.service.UserService;
 
 import java.sql.SQLException;
@@ -93,7 +92,7 @@ public class UserConsole {
             System.out.print("PW : ");
             pw = scan.nextLine();
             boolean idFlag = UService.checkID(id);
-            if (!idFlag){
+            if (idFlag){
                 System.out.println("존재하지 않는 ID입니다.");
                 continue;
             }

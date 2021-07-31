@@ -4,7 +4,6 @@ import JDBCPrj.app.library.entity.Book;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class LibraryService {
@@ -27,6 +26,40 @@ public class LibraryService {
         st.setString(1,"%"+query+"%");
         st.setInt(2, start);
         st.setInt(3, end);
+        ResultSet rs = st.executeQuery();
+        List<Book> list = new ArrayList<>();
+
+        while(rs.next()){
+            //Notice Info
+            String title = rs.getString("TITLE");
+            String writer = rs.getString("WRITER");
+            String clazz = rs.getString("CLASS");
+            int id = rs.getInt("ID");
+            String rentable = rs.getString("RENTABLE");
+            Book book = new Book(
+                    title,
+                    writer,
+                    clazz,
+                    id,
+                    rentable
+            );
+            list.add(book);
+        };
+
+        rs.close();
+        st.close();
+        con.close();
+
+        return list;
+    }
+
+    public List<Book> getReturnList(String rentId) throws ClassNotFoundException, SQLException {
+
+        String sql = "select * from book_view where lender_id = ?";
+        Class.forName(driver);
+        Connection con = DriverManager.getConnection(url, uid, upwd);
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1,rentId);
         ResultSet rs = st.executeQuery();
         List<Book> list = new ArrayList<>();
 
@@ -79,14 +112,12 @@ public class LibraryService {
             );
             return book;
         }
-
         rs.close();
         st.close();
         con.close();
 
         return null;
     }
-
     //Scarlar
     public int getCount(String field, String query) throws ClassNotFoundException, SQLException {
 
@@ -105,7 +136,6 @@ public class LibraryService {
         con.close();
         return count;
     }
-
     //JDBC 정보 입력
     public int insert(Book book) throws ClassNotFoundException, SQLException {
         String title = book.getTitle();
@@ -133,39 +163,6 @@ public class LibraryService {
 
         return result;
     }
-//    //책 정보 수정
-//    public int update(Book book, String lender_id) throws ClassNotFoundException, SQLException {
-//
-//        String title = book.getTitle();
-//        String writer = book.getWriter();
-//        String clazz = book.getClazz();
-//        String rentable = book.getRentable();
-//        int id = book.getId();
-//
-//        String sql = "update book " +
-//                "set" +
-//                "    title = ?," +
-//                "    writer = ?," +
-//                "    class = ?," +
-//                "    rentable = ?"+
-//                "WHERE id = ?";
-//
-//        Class.forName(driver);
-//        Connection con = DriverManager.getConnection(url,  uid, upwd);
-//        PreparedStatement st = con.prepareStatement(sql);
-//        st.setString(1,title);
-//        st.setString(2,writer);
-//        st.setString(3,clazz);
-//        st.setString(4,rentable);
-//        st.setInt(5,id);
-//
-//        int result = st.executeUpdate();
-//
-//        st.close();
-//        con.close();
-//
-//        return result;
-//    }
     //책 대출, 반납
     public int update(Book book, String lender_id) throws ClassNotFoundException, SQLException {
 
@@ -208,6 +205,5 @@ public class LibraryService {
 
         return result;
     }
-
 
 }
