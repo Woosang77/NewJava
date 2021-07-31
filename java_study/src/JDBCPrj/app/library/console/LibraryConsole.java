@@ -58,9 +58,9 @@ public class LibraryConsole {
 
     public void movePrevList() {
         if (page == 1) {
-            System.out.println("==============================");
-            System.out.println("[     이전 페이지가 없습니다.    ]");
-            System.out.println("==============================");
+            System.out.println("┌──────────────────────────────┐");
+            System.out.println("│      이전 페이지가 없습니다      │");
+            System.out.println("└──────────────────────────────┘");
             return;
         }
         page--;
@@ -71,9 +71,9 @@ public class LibraryConsole {
         int lastPage = (count / 10);
         lastPage = count % 10 > 0 ? lastPage + 1 : lastPage;
         if (page == lastPage) {
-            System.out.println("==============================");
-            System.out.println("[      마지막 페이지입니다.     ]");
-            System.out.println("==============================");
+            System.out.println("┌──────────────────────────────┐");
+            System.out.println("│       마지막 페이지입니다       │");
+            System.out.println("└──────────────────────────────┘");
             return;
         }
         page++;
@@ -138,5 +138,9 @@ public class LibraryConsole {
                 System.out.println("다시 입력해주세요");
             }
         }
+    }
+
+    public void returnBook() {
+
     }
 }

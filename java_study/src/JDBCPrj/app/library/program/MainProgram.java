@@ -2,6 +2,7 @@ package JDBCPrj.app.library.program;
 
 import JDBCPrj.app.library.console.LibraryConsole;
 import JDBCPrj.app.library.console.UserConsole;
+import JDBCPrj.app.library.entity.User;
 
 import java.sql.SQLException;
 
@@ -10,10 +11,15 @@ public class MainProgram {
         LibraryConsole console = new LibraryConsole();
         UserConsole UConsole = new UserConsole();
 
-        boolean flag = UConsole.showOption();
+        User user = UConsole.showOption();
         EXIT:
-        while (!flag){
+        while (user.isFlag()){
             //전체 도서 보여주기
+            System.out.printf("%s. %s. %s. %s",
+                    user.getName(),
+                    user.getId(),
+                    user.getPw(),
+                    user.isFlag());
             console.printLibraryList();
             int menu = console.inputLibraryMenu();
             switch (menu){
@@ -33,6 +39,7 @@ public class MainProgram {
                     console.rentBook();
                     break;
                 case 6: //도서 반납
+                    console.returnBook();
                     break;
                 case 7: //나가기
                     System.out.println("Bye~~~");

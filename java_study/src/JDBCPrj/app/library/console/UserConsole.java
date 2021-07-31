@@ -15,11 +15,11 @@ public class UserConsole {
         UService = new UserService();
     }
 
-    public boolean showOption() throws SQLException, ClassNotFoundException {
-        boolean flag = true;
+    public User showOption() throws SQLException, ClassNotFoundException {
         Scanner scan = new Scanner(System.in);
+        User user = new User();
         EXIT:
-        while (flag) {
+        while (!user.isFlag()) {
             System.out.println("1. 로그인");
             System.out.println("2. 회원가입");
             System.out.println("3. 나가기");
@@ -27,8 +27,8 @@ public class UserConsole {
             int num = scan.nextInt();
             switch (num) {
                 case 1: //로그인
-                    logIn();
-                    flag = false;
+                    user = logIn();
+                    user.setFlag(true);
                     break;
                 case 2: //회원가입
                     register();
@@ -39,7 +39,7 @@ public class UserConsole {
                     System.out.println("다시 입력해주세요.");
             }
         }
-        return flag;
+        return user;
     }
 
     private void register() throws SQLException, ClassNotFoundException {
@@ -52,9 +52,16 @@ public class UserConsole {
         String sex;
         String phone;
         String email;
+        boolean flag;
 
-        System.out.print("ID : ");
-        id = scan.nextLine();
+        do{
+            System.out.print("ID : ");
+            id = scan.nextLine();
+            flag = UService.checkID(id);
+            if (!flag){
+                System.out.println("중복되는 아이디가 존재합니다.");
+            }
+        }while(!flag);
         System.out.print("PW : ");
         pw = scan.nextLine();
         System.out.print("이름 : ");
@@ -69,17 +76,12 @@ public class UserConsole {
         email = scan.nextLine();
 
         User reg_user = new User(id, pw, name, sex, gender, phone, email);
-        int num = UService.checkID(reg_user);
-        if (num != 0){
-            System.out.println("중복되는 아이디가 존재합니다.");
-        }else {
-            UService.add(reg_user);
-        }
+        UService.add(reg_user);
 
     }
 
 
-    public void logIn() throws SQLException, ClassNotFoundException {
+    public User logIn() throws SQLException, ClassNotFoundException {
         Scanner scan = new Scanner(System.in);
         String id;
         String pw;
@@ -90,18 +92,20 @@ public class UserConsole {
             id = scan.nextLine();
             System.out.print("PW : ");
             pw = scan.nextLine();
-            user = new User(id, pw);
-            int idFlag = UService.checkID(user);
-            if (idFlag == 0){
+            boolean idFlag = UService.checkID(id);
+            if (!idFlag){
                 System.out.println("존재하지 않는 ID입니다.");
                 continue;
             }
-            boolean flag = UService.checkPW(id, pw);
-            if (!flag){
+            boolean pwflag = UService.checkPW(id, pw);
+            if (!pwflag){
                 System.out.println("비밀번호 오류");
                 continue;
             }
-            break;
+            user = UService.getUser(id, pw);
+            return user;
         }
     }
+
+
 }

@@ -10,10 +10,6 @@ public class Book {
     private int id;
     private String rentable;
 
-    public Book() {
-
-    }
-
     public Book(String title, String writer, String clazz) {
         this.title = title;
         this.writer = writer;

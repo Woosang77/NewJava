@@ -9,6 +9,10 @@ public class User {
     private String gender;
     private String phone;
     private String email;
+    private boolean flag = false;
+
+    public User() {
+    }
 
     public User(String id, String pw) {
         this.id = id;
@@ -86,5 +90,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 }
