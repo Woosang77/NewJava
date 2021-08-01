@@ -30,32 +30,16 @@ public class Book {
         this.rentable = rentable;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getWriter() {
         return writer;
-    }
-
-    public void setWriter(String writer) {
-        this.writer = writer;
     }
 
     public String getClazz() {
         return clazz;
     }
 
-    public void setClazz(String clazz) {
-        this.clazz = clazz;
-    }
-
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getRentable() {
